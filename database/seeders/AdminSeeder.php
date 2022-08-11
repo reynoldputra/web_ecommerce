@@ -1,10 +1,12 @@
 <?php
 
 namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+ 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+ 
 class AdminSeeder extends Seeder
 {
     /**
@@ -14,18 +16,20 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Admin::factory()->create([
-                'name' => 'Admin Pertama',
+        DB::table('admins')->insert([
+                'nama' => 'Admin Pertama',
                 'username' => 'admin1',
                 'email' => 'admin1@example.com',
-                'no_telp' => '08123123123'
+                'no_telp' => '08123123123',
+                'password' => Hash::make('password'),
         ]);
 
-        \App\Models\Admin::factory()->create([
-            'name' => 'Admin Kedua',
+        DB::table('admins')->insert([
+            'nama' => 'Admin Kedua',
             'username' => 'admin2',
             'email' => 'admin2@example.com',
-            'no_telp' => '08345345345'
+            'no_telp' => '08345345345',
+            'password' => Hash::make('password'),
         ]);
     }
 }
