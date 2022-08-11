@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('status_transaksis', function (Blueprint $table) {
             $table->id();
-            $tabel->string('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignId('cart_id')->constrained('cart');
             $table->foreignId('status_transaksi_id')->constrained('status_transaksis');
             $table->foreignId('bank_id')->constrained('banks');
-            $table->timestamps();
         });
     }
 
