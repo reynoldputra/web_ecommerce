@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi');
             $table->bigInteger('harga');
+            $table->string('gambar')->nullable()->change();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
                     ->references('id')
