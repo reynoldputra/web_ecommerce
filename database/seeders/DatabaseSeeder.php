@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             BankSeeder::class,
-            StatusTransaksiSeeder::class
+            StatusTransaksiSeeder::class,
+            TransaksiSeeder::class
         ]);
     }
 }
