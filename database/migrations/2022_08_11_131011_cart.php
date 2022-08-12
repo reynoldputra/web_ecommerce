@@ -21,11 +21,12 @@ return new class extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')
+            $table->unsignedBigInteger('detail_product_id');
+            $table->foreign('detail_product_id')
                     ->references('id')
-                    ->on('product')
+                    ->on('detail_product')
                     ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
