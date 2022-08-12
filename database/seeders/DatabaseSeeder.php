@@ -27,13 +27,13 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             BankSeeder::class,
             StatusTransaksiSeeder::class,
-            TransaksiSeeder::class,
             UserSeeder::Class,
+            SizeSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
-            SizeSeeder::class,
             Detail_ProductSeeder::class,
-            CartSeeder::class
+            CartSeeder::class,
+            TransaksiSeeder::class,
         ]);
     }
 }

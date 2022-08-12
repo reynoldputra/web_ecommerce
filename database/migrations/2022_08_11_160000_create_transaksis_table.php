@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nomor_transaksi');
             $table->string('bank_user');
             $table->foreignId('admin_id')->constrained('admins');
-            $table->foreignId('cart_id')->nullable()->constrained('cart'); //sementara kosong, nunggu seed cart jadi
+            $table->foreignId('cart_id')->constrained('cart');
             $table->foreignId('status_transaksi_id')->constrained('status_transaksis');
             $table->foreignId('bank_id')->constrained('banks');
         });
