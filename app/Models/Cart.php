@@ -17,7 +17,6 @@ class Cart extends Model
     public function detail_product(){
         return $this->belongsTo(Detail_Product::class);
     }
-
     public function transaksi(){
         return $this->hasMany(Transaksi::class);
     }
