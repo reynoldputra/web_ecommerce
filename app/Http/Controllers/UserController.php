@@ -12,6 +12,7 @@ class UserController extends Controller
         $cart = Cart::where('user_id', Auth::user()->id)->sum('quantity');
         return $cart;
     }
+    
     public function index(){
         $cart_navbar = $this->cart();
         $product = Product::orderBy('id')->take(3)->get();
