@@ -32,7 +32,7 @@ class LoginController extends Controller
         if(Auth()->user()->role == "user"){
             return route('user.home');
         } else if (Auth()->user()->role == "admin"){
-            return route('admin.home');
+            return route('product.product.index');
         }
         // } else if (Auth()->user()->role == "super admin"){
         //     return route('user.home');
@@ -59,11 +59,8 @@ class LoginController extends Controller
             if(Auth()->user()->role == "user"){
                 return route('user.index');
             } else if (Auth()->user()->role == "admin"){
-                return route('admin.index');
+                return route('product.product.index');
             }   
-            // } else if (Auth()->user()->role == "super admin"){
-            //     return route('user.home');
-            // }
         } else {
             return redirect()->route('login')->with('Error', 'Email or/and password are wrong');
         }

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,7 @@ Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
 });
 
 Route::group(["prefix"=>'admin', 'middleware'=>['isAdmin','auth']], function(){
-    Route::get('/home', [AdminController::class, 'index'])->name('admin.index');
+    Route::resource('product', ProductController::class, ['as' => 'product']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

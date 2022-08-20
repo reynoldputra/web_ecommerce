@@ -1,1 +1,0 @@
-<h1>Admin Page Success</h1>
