@@ -29,7 +29,7 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo(){
         if(Auth()->user()->role==2){
-            return route('user.home');
+            return route('user.index');
         }
     }
     /**
@@ -49,7 +49,7 @@ class LoginController extends Controller
         ]);
         if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password']))){
             if(auth()->user()->role==2){
-                return redirect()->route('user.home');
+                return redirect()->route('user.index');
             }
         }else{
             return redirect()->route('login')->with('Error', 'Email and password are wrong');
