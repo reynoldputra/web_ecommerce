@@ -2,6 +2,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +29,7 @@ Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
 
 Route::group(["prefix"=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::resource('product', ProductController::class, ['as' => 'product']);
+    Route::resource('category', CategoryController::class, ['as' => 'category']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

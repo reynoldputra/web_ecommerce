@@ -140,13 +140,13 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li>
-        <a href="/admin/product" class="nav-link text-white active">
+        <a href="/admin/product" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
           Product
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/admin/category" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
           Category
         </a>
