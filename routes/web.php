@@ -1,5 +1,8 @@
 <?php
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/',function(){
     return view('welcome');
 });
+<<<<<<< HEAD
 Route::get('/product',function(){
     return view('user.content.product');
 });
@@ -26,7 +30,11 @@ Route::get('/shop',function(){
 Route::get('/success',function(){
     return view('user.content.success');
 });
+=======
+
+>>>>>>> 812f57f31f368f39563f40cd21d385e45aaee599
 Auth::routes();
+
 Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::get('/home', [UserController::class, 'index'])->name('user.index');
     Route::get('/product/{id}', [UserController::class, 'product'])->name('user.product');
@@ -36,4 +44,10 @@ Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::post('/checkout', [UserController::class, 'checkout'])->name('user.checkout');
     Route::get('/success', [UserController::class, 'success'])->name('user.success');
 });
+
+Route::group(["prefix"=>'admin', 'middleware'=>['isAdmin','auth']], function(){
+    Route::resource('product', ProductController::class, ['as' => 'product']);
+    Route::resource('category', CategoryController::class, ['as' => 'category']);
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

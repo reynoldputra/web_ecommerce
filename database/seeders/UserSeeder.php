@@ -23,7 +23,8 @@ class UserSeeder extends Seeder
             'email' => 'jamalFirdaus@gmail.com',
             'alamat' => 'Jalan Keputih Makam, Kec Sukolilo, Surabaya Timur',
             'nomor_telepon' => "089564231155",
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'role' => 'user'
         ]);
         User::create([
             'id' => '2',
@@ -32,7 +33,8 @@ class UserSeeder extends Seeder
             'email' => 'christine_wynne@gmail.com',
             'alamat' => 'Jalan Pierre Tendean, Kec Balikpapan Kota, Kota Balikpapan',
             'nomor_telepon' => "081345226985",
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'role' => 'user'
         ]);
         User::create([
             'id' => '3',
@@ -41,7 +43,26 @@ class UserSeeder extends Seeder
             'email' => 'raffiherman21@gmail.com',
             'alamat' => 'Jalan Ahmad Yani, Kec Wonocolo, Surabaya Selatan',
             'nomor_telepon' => "082178556301",
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'role' => 'user'
+        ]);
+
+        User::create([
+            'name' => 'Admin Pertama',
+            'username' => 'admin1',
+            'email' => 'admin1@example.com',
+            'nomor_telepon' => '08123123123',
+            'password' => Hash::make('password'),
+            'role' => 'super admin'
+        ]);
+
+        User::create([
+            'name' => 'Admin Kedua',
+            'username' => 'admin2',
+            'email' => 'admin2@example.com',
+            'nomor_telepon' => '08345345345',
+            'password' => Hash::make('password'),
+            'role' => 'admin'
         ]);
     }
 }

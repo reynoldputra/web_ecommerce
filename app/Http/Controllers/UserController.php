@@ -9,7 +9,16 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
+<<<<<<< HEAD
 {   
+=======
+{
+    public function cart(){
+        $cart = Cart::where('user_id', Auth::user()->id)->sum('quantity');
+        return $cart;
+    }
+    
+>>>>>>> 812f57f31f368f39563f40cd21d385e45aaee599
     public function index(){
         $product = Product::orderBy('id')->take(3)->get();
         return view('user.content.index', compact("product"));
