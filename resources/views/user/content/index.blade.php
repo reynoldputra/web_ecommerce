@@ -48,7 +48,7 @@
                         @foreach ($product as $key)
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src={{ asset("user-asset/img/mickey1.jpg") }} alt="" />
+                                        <img src={{ asset('storage/product/'.  $key->gambar ) }} alt="" />
                                         <ul>
                                             <li class="w-icon active">
                                                 <a href="#"><i class="icon_bag_alt"></i></a>

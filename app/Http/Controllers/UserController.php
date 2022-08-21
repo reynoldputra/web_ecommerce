@@ -6,19 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Detail_Product;
 use App\Models\Cart;
+use App\Models\Bank;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
-<<<<<<< HEAD
-{   
-=======
 {
     public function cart(){
         $cart = Cart::where('user_id', Auth::user()->id)->sum('quantity');
         return $cart;
     }
     
->>>>>>> 812f57f31f368f39563f40cd21d385e45aaee599
     public function index(){
         $product = Product::orderBy('id')->take(3)->get();
         return view('user.content.index', compact("product"));
@@ -45,24 +43,29 @@ class UserController extends Controller
         return view('user.content.product', compact("product", "related_products", "product_size"));
     }
     public function shoppingcart(){
-        $cart = Cart::where('user_id', Auth::user()->id)->get();
-        $cart_total = Cart::where('user_id', Auth::user()->id)->sum('total_harga');
-        return view('user.content.shopping-cart', compact("cart", "cart_total"));
+        $id = Auth::user()->id;
+        $cart = Cart::where('user_id', $id)->get();
+        $user_trans = Transaksi::where('cart_user_id', $id)->get(); 
+        $cart_total = Transaksi::where('cart_user_id', $id)->cart->sum('total_harga');
+        $bank_admin = Bank::all();
+        return view('user.content.shopping-cart', compact("cart", "cart_total", 'bank_admin', 'bank'));
     }
+    
     public function checkout(Request $request){
         $request->validate([
-            "nama" => 'required',
-            'email' => 'required',
-            'nohp' => 'required',
-            'alamat' => 'required'
+            "bank" => 'required',
+            'nomor_bank' => 'required',
         ],
         [
-            "nama.required" => "Nama harus diisi",
-            "email.required" => "Email harus diisi",
-            "nohp.required" => "Nomor HP harus diisi",
-            "alamat.required" => "Alamat harus diisi"
+            "bank.required" => "Nama harus diisi",
+            "nomor_bank.required" => "Nomor bank harus diisi"
         ]
         );
-        
+        Transaksi::create([
+            'bank_id' => $request['bank'],
+            'bank_user' => $request['nomor_bank'],
+            'status_transaksi_id' => '1'
+        ]);
+        return redirect()->back();
     }
 }

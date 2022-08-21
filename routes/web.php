@@ -20,19 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/',function(){
     return view('welcome');
 });
-<<<<<<< HEAD
-Route::get('/product',function(){
-    return view('user.content.product');
-});
-Route::get('/shop',function(){
-    return view('user.content.shopping-cart');
-});
-Route::get('/success',function(){
-    return view('user.content.success');
-});
-=======
 
->>>>>>> 812f57f31f368f39563f40cd21d385e45aaee599
 Auth::routes();
 
 Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){

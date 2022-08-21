@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-    
     protected $guarded = ['id'];
     protected $with = ['admin', 'cart', 'status_transaksi', 'bank'];
 
     public function admin(){
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(User::class);
     }
 
     public function cart(){

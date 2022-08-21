@@ -30,31 +30,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
+                        @foreach ($product as $item)
                         <div class="col-lg-6">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="{{ asset('user-asset/img/mickey1.jpg') }}" alt="" />
-                            </div>
-                            <div class="product-thumbs">
-                                <div class="product-thumbs-track ps-slider owl-carousel">
-                                    <div class="pt active" data-imgbigurl="img/mickey1.jpg">
-                                        <img src="img/mickey1.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" data-imgbigurl="img/mickey2.jpg">
-                                        <img src="img/mickey2.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" data-imgbigurl="img/mickey3.jpg">
-                                        <img src="img/mickey3.jpg" alt="" />
-                                    </div>
-
-                                    <div class="pt" data-imgbigurl="img/mickey4.jpg">
-                                        <img src="img/mickey4.jpg" alt="" />
-                                    </div>
-                                </div>
+                                <img class="product-big-img" src={{ asset('storage/product/'.  $item->gambar ) }} alt="" />
                             </div>
                         </div>
-                        @foreach ($product as $item)
+                       
                         <div class="col-lg-6">
                             <div class="product-details">
                                 <div class="pd-title">
@@ -112,7 +94,7 @@
                     @foreach ($related_products as $item)
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="{{ asset('user-asset/img/products/women-1.jpg') }}" alt="" />
+                                <img src={{ asset('storage/product/'.  $item->gambar ) }} alt="" />
                                 <ul>
                                     <li class="w-icon active">
                                         <a href="#"><i class="icon_bag_alt"></i></a>

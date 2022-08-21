@@ -56,7 +56,7 @@ button, input[type="submit"] {
                                             @forelse ($cart_nav as $item)
                                                 <tr>
                                                 <td class="si-pic">
-                                                <img src="{{ asset("user-asset/img/select-product-1.jpg") }} alt="" />
+                                                <img src="{{ asset('storage/product/'. $item->detail_product->product->gambar) }}" alt="" />
                                                 </td>
                                                 <td class="si-text">
                                                     <div class="product-selected">
