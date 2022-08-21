@@ -12,8 +12,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     {{ __('You are logged in!') }}
+                    <a href="{{ url('user/home') }}">Continue Shopping</a>
                 </div>
             </div>
         </div>

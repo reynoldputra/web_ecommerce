@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('cart', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('quantity');
+            $table->bigInteger('total_harga');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                     ->references('id')

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nomor_transaksi');
             $table->string('bank_user');
-            $table->foreignId('user_id')->constrained('users') ;
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('status_transaksi_id')->constrained('status_transaksis');
             $table->foreignId('bank_id')->constrained('banks');
             $table->timestamps();
