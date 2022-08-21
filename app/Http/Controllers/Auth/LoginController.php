@@ -35,9 +35,7 @@ class LoginController extends Controller
         } else if (Auth()->user()->role == "admin"){
             return route('product.product.index');
         }
-        // } else if (Auth()->user()->role == "super admin"){
-        //     return route('user.home');
-        // }
+
     }
     /**
      * Create a new controller instance.

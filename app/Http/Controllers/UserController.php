@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\Bank;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -16,13 +17,13 @@ class UserController extends Controller
         $cart = Cart::where('user_id', Auth::user()->id)->sum('quantity');
         return $cart;
     }
-    
     public function index(){
         $product = Product::orderBy('id')->take(3)->get();
         return view('user.content.index', compact("product"));
     }
+
     public function deleteCart(Request $request){
-        Cart::first('id', $request->id)->delete();
+        Cart::first('id', $request['id'])->delete();
         return redirect()->back();
     }
     public function addToCart(Request $request){
@@ -34,6 +35,16 @@ class UserController extends Controller
             'user_id' => Auth::user()->id,
             'total_harga' => Product::where('id', $request['id'])->first()->harga
         ]);
+        if (is_null(Transaksi::where('user_id', Auth::user()->id))){
+            $nomor_transaksi = Str::random(10);
+            Transaksi::create([
+                'bank_id' => '',
+                'user_id' => Auth::user()->id,
+                'bank_user' => '',
+                'status_transaksi_id' => '1',
+                'nomor_transaksi' => $nomor_transaksi
+            ]);
+        }
         return redirect()->back();
     }
     public function product($id){
@@ -45,13 +56,14 @@ class UserController extends Controller
     public function shoppingcart(){
         $id = Auth::user()->id;
         $cart = Cart::where('user_id', $id)->get();
-        $user_trans = Transaksi::where('cart_user_id', $id)->get(); 
-        $cart_total = Transaksi::where('cart_user_id', $id)->cart->sum('total_harga');
+        $user_trans = Transaksi::where('user_id', $id)->get();
+        $cart_total = Cart::where('user_id', $id)->sum('total_harga');
         $bank_admin = Bank::all();
-        return view('user.content.shopping-cart', compact("cart", "cart_total", 'bank_admin', 'bank'));
+        return view('user.content.shopping-cart', compact("cart", "cart_total", 'bank_admin','user_trans'));
     }
     
     public function checkout(Request $request){
+        
         $request->validate([
             "bank" => 'required',
             'nomor_bank' => 'required',
@@ -61,10 +73,10 @@ class UserController extends Controller
             "nomor_bank.required" => "Nomor bank harus diisi"
         ]
         );
-        Transaksi::create([
+        Transaksi::where('user_id', Auth::user()->id)->update([
             'bank_id' => $request['bank'],
             'bank_user' => $request['nomor_bank'],
-            'status_transaksi_id' => '1'
+            'status_transaksi_id' => '2',
         ]);
         return redirect()->back();
     }

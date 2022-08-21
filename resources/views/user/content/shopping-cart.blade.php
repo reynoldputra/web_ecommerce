@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{ route('user.index') }}"><i class="fa fa-home"></i> Home</a>
                         <span>Shopping Cart</span>
                     </div>
                 </div>
@@ -45,14 +45,16 @@
                                         @forelse ($cart as $item)
                                         <tr>
                                             <td class="cart-pic first-row">
-                                                <img src="img/cart-page/product-1.jpg" />
+                                                <img src={{ asset('storage/product/'.$item->detail_product->product->gambar) }} />
                                             </td>
                                             <td class="cart-title first-row text-center">
                                                 <h5>{{ $item->detail_product->product->nama }}</h5>
                                             </td>
                                             <td class="p-price first-row">Rp{{ $item->detail_product->product->harga }}</td>
                                             <td class="delete-item"><a href="#"><i class="material-icons">
-                                              Ready
+                                                @foreach ($user_trans as $item)
+                                                {{ $item->status_transaksi->status }}
+                                                @endforeach
                                               </i></a></td>
                                         </tr>
                                         @empty
@@ -66,14 +68,15 @@
                                 Informasi Pembeli:
                             </h4>
                             <div class="user-checkout">
-                                <form method="POST" action="/checkout">
+                                <form method="POST" action="{{ route('user.checkout') }}">
+                                    @csrf
+                                    @method('put')
                                     <div class="form-group">
                                         <label for="bank">Bank</label>
                                         
                                         <select name="bank" id="bank">
                                             @foreach ($bank_admin as $item)
-                                            <option value="{{ $item->id }}">{{ $item->nama }}</option> 
-                                            <option value="{{ $item->id }}">{{ $item->nama }}</option> 
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>  
                                             @endforeach
                                         </select>
                                         @error('bank')
@@ -101,15 +104,18 @@
                                     @forelse ( $user_trans as $item)
                                     <li class="subtotal">ID Transaction <span>{{ $item->nomor_transaksi }}</span></li>
                                     <li class="subtotal mt-3">Total Biaya <span>Rp{{ $cart_total }}</span></li>
-                                    <li class="subtotal mt-3">Bank Transfer <span>{{ $item->bank_id->nama }}</span></li>
+                                    <li class="subtotal mt-3">Bank Transfer <span>{{ $item->bank->nama }}</span></li>
                                     <li class="subtotal mt-3">No. Rekening <span>{{ $item->bank_user }}</span></li>
-                                    <li class="subtotal mt-3">Nama Penerima <span>{{ Auth::user()->nama }}</span></li>
+                                    <li class="subtotal mt-3">Nama Penerima <span>{{ Auth::user()->name }}</span></li>
                                     @empty
                                         
                                     @endforelse
                                  
                                 </ul>
-                                <a href="success.html" class="proceed-btn"></a>
+                                <a href="success.html" class="proceed-btn">@foreach ($user_trans as $item)
+                                    <th>{{ $item->status_transaksi->status }}</th>
+                                    @endforeach
+                                    </a>
                             </div>
                         </div>
                     </div>

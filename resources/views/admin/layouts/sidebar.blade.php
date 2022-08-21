@@ -7,7 +7,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
     <title>Dashboard</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sidebars/">
 
 
@@ -68,7 +68,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="/css/sidebars.css" rel="stylesheet">
+    <link href="{{ asset('user-asset/css/sidebars.css') }}" rel="stylesheet">
   </head>
   <body >
     
@@ -152,7 +152,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/admin/transaction" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           Transaction
         </a>
@@ -192,7 +192,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-<script src="/js/sidebars.js"></script>
+<script src="{{ asset('user-asset/js/sidebars.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <script>
   feather.replace()

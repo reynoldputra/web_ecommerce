@@ -3,6 +3,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,13 +30,16 @@ Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::delete('/deleteCart', [UserController::class, 'deleteCart'])->name('user.deleteCart');
     Route::post('/addToCart', [UserController::class, 'addToCart'])->name('user.addToCart');
     Route::get('/shopping-cart', [UserController::class, 'shoppingcart'])->name('user.shoppingCart');
-    Route::post('/checkout', [UserController::class, 'checkout'])->name('user.checkout');
+    Route::put('/checkout', [UserController::class, 'checkout'])->name('user.checkout');
     Route::get('/success', [UserController::class, 'success'])->name('user.success');
 });
 
 Route::group(["prefix"=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::resource('product', ProductController::class, ['as' => 'product']);
     Route::resource('category', CategoryController::class, ['as' => 'category']);
+    Route::get("/transaction", [TransactionController::class, 'index']);
+    Route::get("/transaction/show/{transaksi}", [TransactionController::class, 'show']);
+    Route::put("/transaction/confirm/{transaksi}", [TransactionController::class, 'confirm']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

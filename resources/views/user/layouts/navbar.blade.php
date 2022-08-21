@@ -34,7 +34,7 @@ button, input[type="submit"] {
             <div class="row">
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
-                        <a href="./index.html">
+                        <a href="{{ route('user.index') }}">
                             <img src={{ asset("user-asset/img/logo_website_shayna.png") }} alt="" />
                         </a>
                     </div>
@@ -86,7 +86,6 @@ button, input[type="submit"] {
                                     <h5>Rp{{ $cart_sum }}</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
                                     <a href="{{ route('user.shoppingCart') }}" class="primary-btn checkout-btn">CHECK OUT</a>
                                 </div>
                             </div>
