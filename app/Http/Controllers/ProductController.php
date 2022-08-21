@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.content.index', [
-            'products' => Product::get()->toArray() 
+            'products' => Product::with('detail_product')->get()->toArray() 
         ]);
     }
 
@@ -114,8 +114,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product_arr = Product::where('id', $product->id)->with('detail_product')->get()->toArray();
         return view('admin.content.show', [
-            'product' => $product->toArray() 
+            'product' => $product_arr[0]    
         ]);
     }
 
@@ -127,8 +128,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $product_arr = Product::where('id', $product->id)->with('detail_product')->get()->toArray();
         return view('admin.content.edit', [
-            'product' => $product->toArray(),
+            'product' => $product_arr[0],      
             'categories' => Category::get()->toArray()
         ]);
     }
@@ -215,6 +217,16 @@ class ProductController extends Controller
 
         //delete article
         $product->delete();
+
+        Detail_Product::where('product_id', $product->id)
+                ->delete();
+        Detail_Product::where('product_id', $product->id)
+                ->delete();
+        Detail_Product::where('product_id', $product->id)
+                ->delete();
+        Detail_Product::where('product_id', $product->id)
+                ->delete();
+
 
         //return response
         return redirect('/admin/product');

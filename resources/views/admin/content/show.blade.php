@@ -5,7 +5,7 @@
 <div class="container py-5 px-5">
     <div class="row">
         <div class="col col-sm-4">
-          <img src="https://picsum.photos/600" alt="" class="img-thumbnail" >
+          <img src="{{ asset('storage/product/'.$product["gambar"])}}" alt="" class="img-thumbnail" >
         </div>
         <div class="col">
             <h5 class="">{{ $product["nama"] }}</h5>
