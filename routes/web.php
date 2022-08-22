@@ -46,12 +46,15 @@ Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::get('/success', [UserController::class, 'success'])->name('user.success');
 });
 
-Route::group(["prefix"=>'admin', 'middleware'=>['isAdmin','auth']], function(){
+Route::group(["prefix"=>'admin', 'middleware'=>['isAdmin', 'auth']], function(){
+    Route::resource('/add', AdminController::class, ['as' => 'add'])->middleware('isSuperAdmin');
     Route::resource('product', ProductController::class, ['as' => 'product']);
     Route::resource('category', CategoryController::class, ['as' => 'category']);
     Route::get("/transaction", [TransactionController::class, 'index']);
+    Route::get("/transaction/history", [TransactionController::class, 'history']);
     Route::get("/transaction/show/{transaksi}", [TransactionController::class, 'show']);
     Route::put("/transaction/confirm/{transaksi}", [TransactionController::class, 'confirm']);
-});
+    Route::put("/transaction/undo/{transaksi}", [TransactionController::class, 'undo']);
+}); 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -17,9 +17,11 @@
         <div class="list-group col-md-6">
             @foreach ($categories as $category)
                 <div class="d-flex">
-                    <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    <a class="list-group-item list-group-item-action "  href="/admin/category/{{ $category["id"] }}">
+                   
                         <b>{{ $category["nama"] }} </b>
-                    </button>
+                  
+                    </a>
                     <div class="d-flex">
                         <a href="/admin/category/{{ $category["id"] }}/edit" class="my-1 m-3"><span class="badge bg-warning p-1" style="height:30px; width:35px;"><i data-feather="edit-2" style="height:20px; width:20px;"></i></span></a>
                         <form action="/admin/category/{{ $category["id"] }}"  method="post" class="d-inline my-1">

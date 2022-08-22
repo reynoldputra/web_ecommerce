@@ -63,9 +63,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return view('admin.content.index', [
+            'category_name' => $category->nama,
+            'products' => Product::with('detail_product')->where('category_id', $category->id)->get()->toArray() 
+        ]);
     }
 
     /**

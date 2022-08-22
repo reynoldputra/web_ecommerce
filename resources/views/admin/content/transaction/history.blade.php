@@ -4,10 +4,10 @@
 <div class="p-3">
     <div class="row justift-content-between py-3">
       <div class="col-md-4">
-        <h1 class="align-middle">Daftar Transaksi</h1>
+        <h1 class="align-middle">History Transaksi</h1>
       </div>
       <div class="col-sm-3 pt-2">
-        <a href="/admin/transaction/history"><button class="btn btn-secondary">History</button></a>
+        <a href="/admin/transaction"><button class="btn btn-primary">Back</button></a>
       </div>
 
     </div>
@@ -27,10 +27,10 @@
                     <td class="align-middle">{{ $transaksi["bank"]["nama"] }}</td>
                     <td><button class="btn btn-primary ajax-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-no-trans="{{ $transaksi["nomor_transaksi"] }}"  data-id="{{  url('admin/transaction/show/'.$transaksi['user_id']) }}">Detail</button></td>
                     <td>
-                      <form action="/admin/transaction/confirm/{{ $transaksi["id"] }}" method="post">
+                      <form action="/admin/transaction/undo/{{ $transaksi["id"] }}" method="post">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn btn-success" onClick="alert('Are you sure want to confirm {{ $transaksi["nomor_transaksi"] }} transaction ?')">Confirm</button>
+                        <button type="submit" class="btn btn-warning" onClick="alert('Are you sure want to undo confirm {{ $transaksi["nomor_transaksi"] }} transaction ?')">Undo Confirm</button>
                       </form>
                     </td>
                 @endforeach

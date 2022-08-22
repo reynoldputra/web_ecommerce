@@ -8,7 +8,9 @@
     <div class="header mb-3">
         <a href="/admin/product/create"><div class="btn btn-primary">Add Product</div></a>
     </div>
-
+    @isset($category_name)
+        <p>by category : {{ $category_name }}</p>
+    @endisset
     {{-- {{ dd($products) }} --}}
     <div class="row justify-content-center w-100 ">
         @foreach ($products as $product)
@@ -16,7 +18,7 @@
                 <div class="card py-3 px-3 ">
                     <img src="{{ asset('storage/product/'.$product["gambar"])}}" alt="" width="100%" height="auto" >
                     <div class="d-flex flex-column align-items-center">    
-                        <p class="text-muted pt-3">{{ $product["category"]["nama"] }}</p>
+                        <a href="/admin/category/{{ $product["category"]["id"] }}" class="text-decoration-none"><p class="text-muted pt-3">{{ $product["category"]["nama"] }}</p></a>
                         <h5 class="">{{ $product["nama"] }}</h5>
                         <p class="text-warning">Rp {{ $product["harga"] }}</p>
                         <div>
