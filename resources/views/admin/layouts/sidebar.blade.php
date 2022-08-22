@@ -165,7 +165,18 @@
         </a>
       </li>
       @endif
+      <a class="nav-link text-white" href="{{ route('logout') }}"
+      onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+            <i data-feather="log-out" width="16" height="16" class="me-2"></i>
+            {{ __('Logout') }}
+        </a>
+  
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </ul>
+
     {{-- <hr>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
