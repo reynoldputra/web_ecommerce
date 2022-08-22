@@ -6,6 +6,14 @@
     <div class="row">
         <div class="col col-sm-4">
           <img src="{{ asset('storage/product/'.$product["gambar"])}}" alt="" class="img-thumbnail" >
+          <div class="p-3 d-flex justify-content-center ">
+            <a href="/admin/product/{{ $product["id"] }}/edit" class="mx-1"><span class="badge bg-warning"><i data-feather="edit-2"></i></span></a>
+            <form action="/admin/product/{{ $product["id"] }}"  method="post" class="d-inline mx-1">
+                @csrf
+                @method('delete')
+                <button type="submit" class="border-0 bg-transparent text-primary px-0 py-0"><span class="badge bg-danger"><i data-feather="trash"></i></span></button>  
+            </form>
+        </div>
         </div>
         <div class="col">
             <h5 class="">{{ $product["nama"] }}</h5>

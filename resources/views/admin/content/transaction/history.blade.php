@@ -30,7 +30,7 @@
                       <form action="/admin/transaction/undo/{{ $transaksi["id"] }}" method="post">
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn btn-warning" onClick="alert('Are you sure want to undo confirm {{ $transaksi["nomor_transaksi"] }} transaction ?')">Undo Confirm</button>
+                        <button type="submit" class="btn btn-danger" onClick="alert('Are you sure want to undo confirm {{ $transaksi["nomor_transaksi"] }} transaction ?')">Undo Confirm</button>
                       </form>
                     </td>
                 @endforeach
