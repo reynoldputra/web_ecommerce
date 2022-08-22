@@ -16,7 +16,7 @@
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                             </p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+                            <a href="#shopnow" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -40,18 +40,18 @@
     <!-- Hero Section End -->
 
     <!-- Women Banner Section Begin -->
-    <section class="women-banner spad">
+    <section class="women-banner spad" id="shopnow">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 mt-5">
-                    <div class="product-slider owl-carousel">
+                    <div class="product-slider owl-carousel" >
                         @foreach ($product as $key)
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src={{ asset("user-asset/img/mickey1.jpg") }} alt="" />
+                                        <img src={{ asset('storage/product/'.  $key->gambar ) }} alt="" />
                                         <ul>
                                             <li class="w-icon active">
-                                                <a href="#"><i class="icon_bag_alt"></i></a>
+                                                <a href="product/{{ $key->id }}"><i class="icon_bag_alt"></i></a>
                                             </li>
                                             <li class="quick-view"><a href="product/{{ $key->id }}">+Quick View</a></li>
                                         </ul>

@@ -32,8 +32,6 @@ Route::get('/success',function(){
     return view('user.content.success');
 });
 
-
-
 Auth::routes();
 
 Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
@@ -42,7 +40,7 @@ Route::group(["prefix"=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::delete('/deleteCart', [UserController::class, 'deleteCart'])->name('user.deleteCart');
     Route::post('/addToCart', [UserController::class, 'addToCart'])->name('user.addToCart');
     Route::get('/shopping-cart', [UserController::class, 'shoppingcart'])->name('user.shoppingCart');
-    Route::post('/checkout', [UserController::class, 'checkout'])->name('user.checkout');
+    Route::put('/checkout', [UserController::class, 'checkout'])->name('user.checkout');
     Route::get('/success', [UserController::class, 'success'])->name('user.success');
 });
 

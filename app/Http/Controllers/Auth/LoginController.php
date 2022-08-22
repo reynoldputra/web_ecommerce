@@ -56,10 +56,12 @@ class LoginController extends Controller
         ]);
 
         if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password']))){
+
+
             if(Auth()->user()->role == "user"){
-                return redirect()->route('user.index');
-            } else if (Auth()->user()->role == "admin" ){
-                return redirect()->route('product.product.index');
+                return route('user.index');
+            } else if (Auth()->user()->role == "admin"){
+                return route('product.product.index');
             } else if (Auth()->user()->role == "super admin"){
                 return redirect()->route('product.product.index');
             }
