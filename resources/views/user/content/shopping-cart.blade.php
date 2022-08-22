@@ -52,13 +52,17 @@
                                             </td>
                                             <td class="p-price first-row">Rp{{ $item->detail_product->product->harga }}</td>
                                             <td class="delete-item"><a href="#"><i class="material-icons">
-                                                @foreach ($user_trans as $item)
+                                                @forelse ($user_trans as $item)
                                                 {{ $item->status_transaksi->status }}
-                                                @endforeach
+                                                @empty
+                                                <td>-</td>
+                                                @endforelse
                                               </i></a></td>
-                                        </tr>
+                                        
                                         @empty
+                                        <td>-</td>
                                         @endforelse
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -72,11 +76,12 @@
                                     @csrf
                                     @method('put')
                                     <div class="form-group">
-                                        <label for="bank">Bank</label>
+                                        <label for="bank">Bank :</label>
                                         
-                                        <select name="bank" id="bank">
+                                        <select name="bank" id="bank" class="form-control">
                                             @foreach ($bank_admin as $item)
-                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>  
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                    
                                             @endforeach
                                         </select>
                                         @error('bank')
@@ -84,8 +89,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="nomor_bank"></label>
-                                        <input type="text" class="form-control" name="nomor_bank" value="" id="nomor_bank" aria-describedby="nobankHelp" placeholder="Masukan Nomor Bank">
+                                        <label for="nomor_bank">Nomor Rekening :</label>
+                                        <input type="text" class="form-control" name="nomor_bank" value="" id="nomor_bank" aria-describedby="nobankHelp" placeholder="Masukan Nomor Rekening">
                                         @error('nomor_bank')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -104,17 +109,19 @@
                                     @forelse ( $user_trans as $item)
                                     <li class="subtotal">ID Transaction <span>{{ $item->nomor_transaksi }}</span></li>
                                     <li class="subtotal mt-3">Total Biaya <span>Rp{{ $cart_total }}</span></li>
-                                    <li class="subtotal mt-3">Bank Transfer <span>{{ $item->bank->nama }}</span></li>
-                                    <li class="subtotal mt-3">No. Rekening <span>{{ $item->bank_user }}</span></li>
+                                    <li class="subtotal mt-3">Bank Transfer <span>{{$status}}
+                                    </span></li>
+                                    <li class="subtotal mt-3">No. Rekening <span>{{ $status2 }}</span></li>
                                     <li class="subtotal mt-3">Nama Penerima <span>{{ Auth::user()->name }}</span></li>
                                     @empty
-                                        
+                                        Belum melakukan pemesanan
                                     @endforelse
-                                 
                                 </ul>
-                                <a href="success.html" class="proceed-btn">@foreach ($user_trans as $item)
+                                <a href="success.html" class="proceed-btn">@forelse ( $user_trans as $item)
                                     <th>{{ $item->status_transaksi->status }}</th>
-                                    @endforeach
+                                @empty
+                                    Belum Dibayar
+                                @endforelse
                                     </a>
                             </div>
                         </div>

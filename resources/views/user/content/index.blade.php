@@ -14,7 +14,7 @@
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                Dapatkan berbagai promo pakaian menarik, mulai dari pakaian anak hingga dewasa tersedia di Shayna
                             </p>
                             <a href="#shopnow" class="primary-btn">Shop Now</a>
                         </div>
@@ -28,9 +28,9 @@
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                Dapatkan berbagai promo pakaian menarik, mulai dari pakaian anak hingga dewasa tersedia di Shayna
                             </p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+                            <a href="#shopnow" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
                 </div>

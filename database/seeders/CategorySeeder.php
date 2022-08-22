@@ -16,11 +16,11 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'id' => '1',
-            'nama' => 'Baju Pria'
+            'nama' => 'Pakaian Pria'
         ]);
         Category::create([
             'id' => '2',
-            'nama' => 'Baju Wanita'
+            'nama' => 'Pakaian Wanita'
         ]);
         Category::create([
             'id' => '3',

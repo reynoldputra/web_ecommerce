@@ -34,5 +34,11 @@ class Detail_ProductSeeder extends Seeder
             'size_id' => '3',
             'product_id' => '3'
         ]);
+        Detail_Product::create([
+            'id' => '4',
+            'stock' => '10',
+            'size_id' => '2',
+            'product_id' => '4'
+        ]);
     }
 }

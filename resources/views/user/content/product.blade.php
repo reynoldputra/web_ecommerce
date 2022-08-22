@@ -47,17 +47,12 @@
                                     <p>
                                         {{ $item->deskripsi }}
                                     </p>
-                                    <p>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam possimus quisquam animi, commodi, nihil voluptate nostrum neque architecto illo officiis doloremque et corrupti cupiditate voluptatibus error illum. Commodi expedita animi nulla aspernatur.
-                                        Id asperiores blanditiis, omnis repudiandae iste inventore cum, quam sint molestiae accusamus voluptates ex tempora illum sit perspiciatis. Nostrum dolor tenetur amet, illo natus magni veniam quia sit nihil dolores.
-                                        Commodi ratione distinctio harum voluptatum velit facilis voluptas animi non laudantium, id dolorem atque perferendis enim ducimus? A exercitationem recusandae aliquam quod. Itaque inventore obcaecati, unde quam
-                                        impedit praesentium veritatis quis beatae ea atque perferendis voluptates velit architecto?
-                                    </p>
                                     <h4>{{ $item->harga }}</h4>
                                 </div>
                                 <form action="{{ route('user.addToCart') }}" method="POST">
                                 @csrf
-                                <select name="size" id="">
+                                <label for="size">Size</label>
+                                <select name="size" id="size" class="form-control">
                                     @foreach ($product_size as $item)
                                     <option value="{{ $item->size->id }}">{{ $item->size->nama_size }}</option>
                                     @endforeach
@@ -65,6 +60,7 @@
                                 @error('size')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
+                                <br>
                                 <div class="quantity">
                                     <button type="submit" name="id" value="{{ $item->id }}" class="primary-btn pd-cart">Add To Cart</button>
                                 </div>
@@ -90,16 +86,17 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($related_products as $item)
                 <div class="col-lg-3 col-sm-6">
-                    @foreach ($related_products as $item)
+                    
                         <div class="product-item">
                             <div class="pi-pic">
                                 <img src={{ asset('storage/product/'.  $item->gambar ) }} alt="" />
                                 <ul>
                                     <li class="w-icon active">
-                                        <a href="#"><i class="icon_bag_alt"></i></a>
+                                        <a href="{{ url('product/'. $item->id ) }}"><i class="icon_bag_alt"></i></a>
                                     </li>
-                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="quick-view"><a href="{{ url('user/product/'. $item->id ) }}">+ Quick View</a></li>
                                 </ul>
                             </div>
                             <div class="pi-text">
@@ -109,11 +106,12 @@
                                     <h5>{{ $item->nama }}</h5>
                                 </a>
                                 <div class="product-price">
-                                    {{ $item->harga }}
+                                    Rp{{ $item->harga }}
                                     <span></span>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                     @endforeach
             </div>

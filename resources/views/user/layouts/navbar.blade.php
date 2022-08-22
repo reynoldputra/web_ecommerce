@@ -70,8 +70,8 @@ button, input[type="submit"] {
                                                         @method('delete')
                                                     <button type = "submit" name="id" value="{{ $item->id }}">
                                                     <i class="ti-close"></i>
-                                                </button>
-                                            </form>
+                                                    </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @empty

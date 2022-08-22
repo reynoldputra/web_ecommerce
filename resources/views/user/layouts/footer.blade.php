@@ -12,12 +12,6 @@
                             <li>Phone: +628 22081996</li>
                             <li>Email: hello.shayna@gmail.com</li>
                         </ul>
-                        <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1">

@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
             dan Upper tekstil. Sneaker ini dilengkapi dengan Insole tekstil dan Rubber outsole membuatnya nyaman dipakai dalam kegiatan sehari-hari',
             'harga' => 750000,
             'category_id' => '4',
-            'gambar' => 'asdfasfsdfasfawerawre.jpg'
+            'gambar' => 'product-9.jpg'
         ]);
         Product::create([
             'id' => '3',
@@ -38,7 +38,15 @@ class ProductSeeder extends Seeder
             'deskripsi' => 'Topi baseball buatan Italia dengan jersey katun, beraksen Vander Monogram dan detail triple-stud',
             'harga' => 500000,
             'category_id' => '3',
-            'gambar' => 'akhsfahi0eruqeprqhwrq.jpg'
+            'gambar' => 'product-5.jpg'
+        ]);
+        Product::create([
+            'id' => '4',
+            'nama' => 'Livy Scarf',
+            'deskripsi' => 'Livy Scarf berbahan wol sangat direkomendasikan untuk cuaca dingin. Bahan wol yang terbilang tebal selain terlihat mewah dan elegan juga mampu untuk menghangatkan bagian tubuhmu yang terasa dingin. Wool scarf bermotif akan sangat cocok untuk outfit polos liburan musim dinginmu agar lebih eye-catching',
+            'harga' => 200000,
+            'category_id' => '2',
+            'gambar' => 'product-4.jpg'
         ]);
     }
 }

@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nomor_transaksi');
-            $table->string('bank_user');
+            $table->string('bank_user')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('status_transaksi_id')->constrained('status_transaksis');
-            $table->foreignId('bank_id')->constrained('banks');
+            $table->foreignId('bank_id')->nullable()->constrained('banks');
             $table->timestamps();
         });
     }

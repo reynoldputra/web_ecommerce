@@ -13,5 +13,5 @@ class StatusTransaksi extends Model
 
     public function transaksi(){
         return $this->hasMany(Transaksi::class);
-    }
+}
 }
